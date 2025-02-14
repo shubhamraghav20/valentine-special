@@ -22,13 +22,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 90vh; /* Adjusted to fit laptops */
-            font-size: 2.5rem;
-            padding: 10px;
+            min-height: 100vh;
+            font-size: 2rem;
+            padding: 15px;
         }
 
         .text {
-            font-size: 3rem; /* Reduced size for laptops */
+            font-size: 2.2rem;
             font-weight: bold;
             opacity: 0;
             transform: translateY(30px);
@@ -41,32 +41,32 @@
         }
 
         .valentine-text {
-            font-size: 4rem;
+            font-size: 3rem;
             color: #ffeb3b;
-            text-shadow: 0 0 15px #ffeb3b, 0 0 30px #ff9800;
+            text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ff9800;
             animation: glow 1.5s infinite alternate;
         }
 
         @keyframes glow {
-            0% { text-shadow: 0 0 15px #ffeb3b, 0 0 30px #ff9800; }
-            100% { text-shadow: 0 0 25px #ffeb3b, 0 0 40px #ff6f00; }
+            0% { text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ff9800; }
+            100% { text-shadow: 0 0 20px #ffeb3b, 0 0 30px #ff6f00; }
         }
 
         .next-button {
-            margin-top: 5px; /* Reduced space */
-            padding: 12px 30px;
-            font-size: 1.8rem;
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1.5rem;
             background: linear-gradient(45deg, #ff6ec4, #ff2a6d);
             color: white;
             border: none;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
-            box-shadow: 0px 0px 15px rgba(255, 0, 100, 0.8);
+            box-shadow: 0px 0px 10px rgba(255, 0, 100, 0.8);
             transition: all 0.3s ease-in-out;
         }
 
         .next-button:hover {
-            box-shadow: 0px 0px 20px rgba(255, 0, 100, 1);
+            box-shadow: 0px 0px 15px rgba(255, 0, 100, 1);
             transform: scale(1.05);
         }
 
@@ -81,8 +81,8 @@
         .heart {
             position: absolute;
             bottom: 0;
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             background-color: red;
             clip-path: polygon(50% 15%, 100% 60%, 50% 100%, 0% 60%);
             opacity: 0.7;
@@ -109,7 +109,7 @@
         <div class="text" id="text3">✨ Then I realized—you are already so special! 🔥</div>
         <div class="text valentine-text" id="text4">
             Happy Valentine's Day! ❤️🎉 <br>
-            <span style="font-size: 2rem; color: white; text-shadow: none; display: block; margin-top: 5px;">
+            <span style="font-size: 1.5rem; color: white; text-shadow: none; display: block; margin-top: 5px;">
                 ✨ Wo noor ka jharna hai, main pyaas purani… 💖 <br>  
                 💫 Maine aankh se gatak liya us husn ka paani… 💕  
             </span>
@@ -145,7 +145,7 @@
             heart.classList.add("heart");
             heart.style.left = Math.random() * 100 + "vw";
             heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-            heart.style.width = heart.style.height = Math.random() * 18 + 12 + "px";
+            heart.style.width = heart.style.height = Math.random() * 15 + 10 + "px";
             document.querySelector(".heart-container").appendChild(heart);
             setTimeout(() => {
                 heart.remove();
