@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Special One 💘</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ff416c, #ff4b2b);
+            color: white;
+            text-align: center;
+            font-family: 'Parisienne', cursive;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh; /* Adjusted to fit laptops */
+            font-size: 2.5rem;
+            padding: 10px;
+        }
+
+        .text {
+            font-size: 3rem; /* Reduced size for laptops */
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .valentine-text {
+            font-size: 4rem;
+            color: #ffeb3b;
+            text-shadow: 0 0 15px #ffeb3b, 0 0 30px #ff9800;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 15px #ffeb3b, 0 0 30px #ff9800; }
+            100% { text-shadow: 0 0 25px #ffeb3b, 0 0 40px #ff6f00; }
+        }
+
+        .next-button {
+            margin-top: 5px; /* Reduced space */
+            padding: 12px 30px;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #ff6ec4, #ff2a6d);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0px 0px 15px rgba(255, 0, 100, 0.8);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .next-button:hover {
+            box-shadow: 0px 0px 20px rgba(255, 0, 100, 1);
+            transform: scale(1.05);
+        }
+
+        .heart-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            clip-path: polygon(50% 15%, 100% 60%, 50% 100%, 0% 60%);
+            opacity: 0.7;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="heart-container"></div>
+
+    <div class="container">
+        <div class="text visible" id="text1">Hey there, Gorgeous </div>
+        <div class="text" id="text2">💝 I wanted to do something special for you… 🎁</div>
+        <div class="text" id="text3">✨ Then I realized—you are already so special! 🔥</div>
+        <div class="text valentine-text" id="text4">
+            Happy Valentine's Day! ❤️🎉 <br>
+            <span style="font-size: 2rem; color: white; text-shadow: none; display: block; margin-top: 5px;">
+                ✨ Wo noor ka jharna hai, main pyaas purani… 💖 <br>  
+                💫 Maine aankh se gatak liya us husn ka paani… 💕  
+            </span>
+        </div>
+
+        <button class="next-button" id="nextButton">Simran ❤️</button>
+    </div>
+
+    <script>
+        let currentStep = 1;
+
+        function showNext() {
+            let currentText = document.getElementById("text" + currentStep);
+            let nextText = document.getElementById("text" + (currentStep + 1));
+
+            currentText.classList.remove("visible");
+            setTimeout(() => {
+                currentText.style.display = "none"; 
+                if (nextText) {
+                    nextText.style.display = "block";
+                    setTimeout(() => {
+                        nextText.classList.add("visible");
+                    }, 100);
+                    currentStep++;
+                } else {
+                    document.getElementById("nextButton").style.display = "none";
+                }
+            }, 500);
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            heart.style.width = heart.style.height = Math.random() * 18 + 12 + "px";
+            document.querySelector(".heart-container").appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+
+        document.getElementById("nextButton").addEventListener("click", showNext);
+
+        setTimeout(() => {
+            document.getElementById("bg-music").play();
+        }, 2000);
+    </script>
+
+</body>
+</html>
